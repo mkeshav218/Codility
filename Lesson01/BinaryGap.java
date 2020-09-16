@@ -1,10 +1,11 @@
-private static int soln(int n) {
+class Solution{
+         private static int soln(int N) {
 	int max=0;
 	int arr[] = new int[100];
 	int i=0,l=0;
-	while(n>0) {
-		arr[i++] = n%2;
-		n=n/2;
+	while(N>0) {
+		arr[i++] = N%2;
+		N=N/2;
 	}
 	int start=arr[0],end=0;
 	i=0;
@@ -24,4 +25,5 @@ private static int soln(int n) {
 	                 }
 	}
 	return max;
+       }
 }

@@ -1,4 +1,5 @@
-private static int solution(int n) {
+class Solution{
+         private static int solution(int n) {
 	int max=0;
 	int arr[] = new int[100];
 	int i=0,l=0;
@@ -24,4 +25,5 @@ private static int solution(int n) {
 	                 }
 	}
 	return max;
+        }
 }

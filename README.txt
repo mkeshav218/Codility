@@ -1,0 +1,1 @@
+Here are the solutions of all the lessons of codility

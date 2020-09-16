@@ -1,5 +1,5 @@
-class Solution{
-         private static int solution(int n) {
+class Solution {
+    public int solution(int N) {
 	int max=0;
 	int arr[] = new int[100];
 	int i=0,l=0;

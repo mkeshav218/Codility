@@ -23,5 +23,5 @@ private static int soln(int n) {
 		        i--;
 	                 }
 	}
-		return max;
+	return max;
 }

@@ -10,3 +10,4 @@ class Solution{
 		else 
 			return gcd(M,N%M);
 	}
+}

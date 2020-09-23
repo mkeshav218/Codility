@@ -1,36 +1,25 @@
 class Solution{ 
 	public int solution(int[] A, int[] B) {
-		Stack<Integer> fishSize = new Stack<Integer>();
-		int curMaxFlowDownStream=-1,oldMaxFlowDownStream=-1;
-		for(int i=0;i<A.length;i++) {
-			if(B[i]==0) {
-				if(curMaxFlowDownStream==-1) {
-					fishSize.push(A[i]);
-				}else {
-					while(curMaxFlowDownStream!=-1) {
-						if(curMaxFlowDownStream<A[i]) {
-							int k = fishSize.pop();
-							if(k==oldMaxFlowDownStream) {
-								curMaxFlowDownStream=-1;
-								oldMaxFlowDownStream=-1;
-								fishSize.push(A[i]);
-							}
-							curMaxFlowDownStream=fishSize.peek();
-						}else {
-							break;
-						}
-						
+		Stack<Integer> stack = new Stack<Integer>();
+		int count=0,i=0;
+		for(;i<B.length;i++) {
+			if(stack.isEmpty() && B[i]==0) {
+				count++;
+			}else if(B[i]==1) {
+				stack.push(A[i]);
+			}else if(B[i]==0) {
+				while(stack.size()>0) {
+					if(stack.peek()<A[i]) {
+						stack.pop();
+					}else {
+						break;
 					}
 				}
-				
-			}else {
-				fishSize.push(A[i]);
-				curMaxFlowDownStream=A[i];               // current fish flowing downstream
-				if(oldMaxFlowDownStream==-1) {
-					oldMaxFlowDownStream=A[i];           //1st fish flowing downstream
+				if(stack.isEmpty()) {
+					count++;
 				}
 			}
 		}
-		return fishSize.size();
+		return count + stack.size();
 	}
 }

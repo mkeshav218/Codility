@@ -1,24 +1,22 @@
 class Solution { 
 	public int solution(int[] A) {
-		HashMap<Integer,Integer> occurance = new HashMap<Integer,Integer>();
-		int leader=-1;
-		for(int i=0;i<A.length;i++) {
-			if(occurance.containsKey(A[i])) {
-				int c = occurance.get(A[i]);
-				c++;
-				occurance.put(A[i], c);
-				if(c>(A.length)/2) {
-					leader= A[i];
-					break;
-				}
+		HashMap<Integer, Integer> frequency = new HashMap<Integer, Integer>();
+		for(int i:A) {
+			if(frequency.containsKey(i)) {
+				int k = frequency.get(i);
+				k++;
+				frequency.put(i,k);
 			}else {
-				occurance.put(A[i], 1);
+				frequency.put(i,1);
 			}
 		}
-		if(leader!=-1) {
-			for(int i=0;i<A.length;i++) {
-				if(A[i]==leader) {
-					return i;
+		Set<Integer> keys = frequency.keySet();
+		for(int i:keys) {
+			if(frequency.get(i)>((A.length)/2)) {
+				for(int j=0;j<A.length;j++) {
+					if(A[j]==i) {
+						return j ;
+					}
 				}
 			}
 		}
